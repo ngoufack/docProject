@@ -12,7 +12,7 @@ export class DocumentService {
 
   constructor(private http: HttpClient) { }
 
-   addDoc(doc: DocModel):Observable<any> {
-    return  this.http.post<any>(this.apiUrl, doc);
+   addDoc(formdata: FormData):Observable<any> {
+    return  this.http.post<any>(this.apiUrl, formdata);
   }
 }

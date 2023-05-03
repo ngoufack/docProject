@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit{
 
   base64textString: any[]=[];
   typeImage!: string;
+  rendutext!: string;
 
   doc: DocModel = new DocModel();
 
@@ -25,30 +26,41 @@ export class HomeComponent implements OnInit{
 
 
 
-  handleReaderLoaded(e:any) {
+  /*handleReaderLoaded(e:any) {
     let data = 'data:'+this.typeImage+';base64,'
     this.base64textString.push( data + btoa(e.target.result));
     this.doc.Image = this.base64textString;
     console.log(this.base64textString);
-  }
+  }*/
 
   onFilselect(event:any){
+
     if (event.target.files) {
       const files = event.target.files[0];
-      console.log(files);
-      const reader = new FileReader();
+      this.doc.Image =  files;
+      //console.log(this.doc);
+      /*const reader = new FileReader();
 
       reader.onload = this.handleReaderLoaded.bind(this);
       reader.readAsBinaryString(files);
-      console.log(reader);
+      console.log(reader);*/
     }
   }
 
   seenDoc(){
-    console.log(this.doc);
-    this.document.addDoc(this.doc).subscribe(data =>{
-      console.log(data);
+    //console.log(this.doc);
+    const  formgroup = new FormData();
+    formgroup.append("Image",this.doc.Image)
+    formgroup.append("DestinationLanguage",this.doc.DestinationLanguage)
+    this.document.addDoc(formgroup).subscribe({
+      next: () => {},
+      error: (e) => {
+        //console.log(e.error.text)
+        this.rendutext = e.error.text;
+      },
+      complete: () => {}
     })
   }
+
 
 }

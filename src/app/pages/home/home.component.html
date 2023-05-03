@@ -4,22 +4,24 @@
 <main class="container my-5">
   <div class="row mx-4">
     <div class="col-md-6 col-12 my-3">
-      <div class="input-group mb-3">
-        <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" value="select" (change)="onFilselect($event)" accept=".png, .jpg, .jpeg, .pdf" aria-label="Upload">
-      </div>
-      <div class="input-group mb-3">
-        <select class="form-select" aria-label="Default select example" [(ngModel)]="doc.DestinationLanguage">
-          <option selected>Choisir la langue</option>
-          <option value="far">Français</option>
-          <option value="eng">Anglais</option>
-        </select>
-      </div>
-      <div class="input-group mb-3">
-        <button type="button" class="btn btn-outline-primary" (click)="seenDoc()">envoyer</button>
-      </div>
+      <form enctype="multipart/form-data">
+        <div class="input-group mb-3">
+          <input type="file" class="form-control" id="inputGroupFile03" aria-describedby="inputGroupFileAddon03" value="select" (change)="onFilselect($event)" accept=".png, .jpg, .jpeg, .pdf" aria-label="Upload">
+        </div>
+        <div class="input-group mb-3">
+          <select class="form-select" aria-label="Default select example" name="DestinationLanguage" [(ngModel)]="doc.DestinationLanguage">
+            <option selected>Choisir la langue</option>
+            <option value="fra">Français</option>
+            <option value="eng">Anglais</option>
+          </select>
+        </div>
+        <div class="input-group mb-3">
+          <button type="button" class="btn btn-outline-primary" (click)="seenDoc()">envoyer</button>
+        </div>
+      </form>
     </div>
-    <div class="col-md-6 col-12 my-3 bg-black">
-
+    <div class="col-md-6 col-12 my-3 ">
+      <p>{{rendutext}}</p>
     </div>
   </div>
 </main>

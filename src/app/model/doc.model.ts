@@ -1,6 +1,6 @@
 
 
 export class DocModel {
-  Image: string[]=[];
+  Image: any;
   DestinationLanguage!: string;
 }
