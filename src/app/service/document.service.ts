@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export class DocumentService {
 
-  private readonly apiUrl: string = "http://localhost:8080/api/ocr";
+  private readonly apiUrl: string = "http://localhost:8085/api/ocr";
 
   constructor(private http: HttpClient) { }
 
